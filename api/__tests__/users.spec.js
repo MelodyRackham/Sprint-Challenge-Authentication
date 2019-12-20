@@ -14,7 +14,7 @@ describe('users model', () => {
     password: 'lambda',
   };
 
-  describe('add', () => {
+  describe('register', () => {
     it('user is not empty', () => {
       expect(user).toMatchObject({
         username: expect.any(String),
@@ -33,6 +33,22 @@ describe('users model', () => {
         });
       const users = await db('users');
       expect(users).toHaveLength(1);
+    });
+  });
+  describe('login', () => {
+    const user = {
+      username: 'register',
+      password: 'lambda',
+    };
+
+    it('user has a property of username', () => {
+      expect(user).toHaveProperty('username');
+    });
+    it('user is not null', () => {
+      expect(user).not.toBeNull();
+    });
+    it('user has a property of password', () => {
+      expect(user).toHaveProperty('password');
     });
   });
 });
